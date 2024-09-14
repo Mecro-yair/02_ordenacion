@@ -4,7 +4,7 @@ using namespace std;
 void InterDirectoDer(int a[],int n);
 void mostrarFuncion(int arreglo[],int tamanio);
 void InterDirectoIzq(int a[],int n);
-
+void InterDirectoCentr(int a[],int n);
 int main(){
 	int n;
 	int op;
@@ -37,11 +37,23 @@ int main(){
 			InterDirectoIzq(arreglo,n);
 			mostrarFuncion(arreglo,n);
 			break;
+		case 3:
+			InterDirectoCentr(arreglo,n);
+			mostrarFuncion(arreglo,n);
+			break;
 				
 	}
 	
 	return 0;
 }
+
+void mostrarFuncion(int arreglo[],int tamanio){
+	for(int i =0 ; i<tamanio; i++){
+		cout << arreglo[i]<<" ";
+	}
+	cout << endl;
+}
+
 void InterDirectoDer(int a[],int n){
 	n--;
 	int aux = 0;
@@ -69,11 +81,20 @@ void InterDirectoIzq(int a[],int n) {
 	}
 }
 
-
-
-void mostrarFuncion(int arreglo[],int tamanio){
-	for(int i =0 ; i<tamanio; i++){
-		cout << arreglo[i]<<" ";
+void InterDirectoCentr(int a[],int n) {
+	int cen=1,i=0,aux;
+	n--; 
+	while(i<n && cen==1) {
+		cen=0; 
+		for (int j=0;j<n-i;j++) {
+			if (a[j]>a[j+1]) {
+				aux=a[j];
+				a[j]=a[j+1];
+				a[j+1]=aux;
+				cen=1; 
+			}
+		}
+		i++;
 	}
-	cout << endl;
 }
+
