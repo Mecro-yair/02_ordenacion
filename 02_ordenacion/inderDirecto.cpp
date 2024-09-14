@@ -5,6 +5,8 @@ void InterDirectoDer(int a[],int n);
 void mostrarFuncion(int arreglo[],int tamanio);
 void InterDirectoIzq(int a[],int n);
 void InterDirectoCentr(int a[],int n);
+void InterDirectoBidirec(int a[],int n);
+
 int main(){
 	int n;
 	int op;
@@ -39,6 +41,10 @@ int main(){
 			break;
 		case 3:
 			InterDirectoCentr(arreglo,n);
+			mostrarFuncion(arreglo,n);
+			break;
+		case 4:
+			InterDirectoBidirec(arreglo,n);
 			mostrarFuncion(arreglo,n);
 			break;
 				
@@ -98,3 +104,28 @@ void InterDirectoCentr(int a[],int n) {
 	}
 }
 
+void InterDirectoBidirec(int a[],int n) {
+	n--;
+	int izq=1,der=n,k=n,aux;
+	
+	while (izq<=der) {
+		for (int i=der;i>=izq;i--) {
+			if (a[i-1]>a[i]) {
+				aux=a[i-1];
+				a[i-1]=a[i];
+				a[i]=aux;
+				k=i;
+			}
+		}
+		izq=k+1;
+		for (int i=izq;i<=der;i++) {
+			if (a[i-1]>a[i]) {
+				aux=a[i-1];
+				a[i-1]=a[i];
+				a[i]=aux;
+				k=i;
+			}
+		}
+		der=k-1;
+	}
+}
