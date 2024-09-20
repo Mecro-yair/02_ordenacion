@@ -1,10 +1,12 @@
 #include <iostream>
+#include <windows.h>
 using namespace std;
 
 void quickSort(int [],int );
 void reduce(int [], int , int);
 
 int main(){
+	SetConsoleOutputCP(CP_UTF8);
 	int tam;
 	
 	cout << "Digite el tamaño del arreglo:"; cin >>tam;
